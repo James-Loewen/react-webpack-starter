@@ -1,0 +1,6 @@
+@use '../scss/variables' as *;
+
+h1 {
+  color: $clr-danger;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
