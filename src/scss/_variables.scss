@@ -1,1 +1,69 @@
-$clr-danger: tomato;
+@use './reset';
+@use './color_schemes';
+
+:root {
+  // base padding size
+  --pad-base: 1rem;
+
+  // padding scale
+  --pad-scale-ratio: 1.4;
+  --pad-xs: calc(var(--pad-base) / var(--pad-scale-ratio) / var(--pad-scale-ratio));
+  --pad-sm: calc(var(--pad-base) / var(--pad-scale-ratio));
+  --pad-md: var(--pad-base);
+  --pad-lg: calc(var(--pad-md) * var(--pad-scale-ratio));
+  --pad-xl: calc(var(--pad-lg) * var(--pad-scale-ratio));
+  --pad-xxl: calc(var(--pad-xl) * var(--pad-scale-ratio));
+
+  // body font size
+  --fs-base: 1rem;
+  
+  // type scale
+  --fs-scale-ratio: 1.4;
+  --fs-sm: var(--fs-base);
+  --fs-md: calc(var(--fs-sm) * var(--fs-scale-ratio));
+  --fs-lg: calc(var(--fs-md) * var(--fs-scale-ratio));
+  --fs-xl: calc(var(--fs-lg) * var(--fs-scale-ratio));
+  --fs-xxl: calc(var(--fs-xl) * var(--fs-scale-ratio));
+}
+
+//############################
+//########## FONTS ###########
+//############################
+// colors
+$fc-primary: var(--fc-primary);
+$fc-on-primary: var(--fc-on-primary);
+// families
+$ff-main: Georgia, 'Times New Roman', Times, serif;
+// sizes
+$fs-xs: var(--fs-xs);
+$fs-sm: var(--fs-sm);
+$fs-md: var(--fs-md);
+$fs-lg: var(--fs-lg);
+$fs-xl: var(--fs-xl);
+$fs-xxl: var(--fs-xxl);
+
+//############################
+//########## COLORS ##########
+//############################
+// background
+$bg-clr: var(--bg-clr);
+$clr-primary: var(--clr-primary);
+$clr-primary-var: var(--clr-primary-var);
+$clr-secondary: var(--clr-secondary);
+$surface-1-clr: var(--surface-1-clr);
+$surface-2-clr: var(--surface-2-clr);
+
+//############################
+//###### SPACE/PADDING #######
+//############################
+$pad-xs: var(--pad-xs);
+$pad-sm: var(--pad-sm);
+$pad-md: var(--pad-md);
+$pad-lg: var(--pad-lg);
+$pad-xl: var(--pad-xl);
+$pad-xxl: var(--pad-xxl);
+
+//############################
+//########## MISC. ###########
+//############################
+$shadow-1: var(--shadow-1);

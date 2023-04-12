@@ -1,6 +1,35 @@
 @use '../scss/variables' as *;
 
-h1 {
-  color: $clr-danger;
-  font-family: Georgia, 'Times New Roman', Times, serif;
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: $pad-md;
+  justify-content: center;
+  align-items: center;
+  padding: $pad-lg;
+  max-width: 45ch;
+  border-radius: $pad-md;
+  box-shadow: $shadow-1;
+  background-color: $surface-1-clr;
+}
+
+.hello {
+  color: $fc-primary;
+  font-family: $ff-main;
+  text-align: center;
+}
+
+.theme-toggle-btn {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: $fs-sm;
+  padding: $pad-xs;
+  border: none;
+  border-radius: $pad-xs;
+  outline: none;
+  background-color: $clr-primary;
+  color: $fc-on-primary;
+
+  &:hover {
+    opacity: .9;
+  }
 }

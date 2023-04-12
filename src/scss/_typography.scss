@@ -1,0 +1,13 @@
+@use './variables' as *;
+
+h1 {
+  font-size: $fs-xl;
+  font-weight: bold;
+}
+
+p {
+  // text-indent: $pad-xl;
+  color: $fc-primary;
+  font-family: $ff-main;
+  font-size: $fs-md;
+}
