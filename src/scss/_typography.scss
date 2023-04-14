@@ -1,13 +1,14 @@
 @use './variables' as *;
 
 h1 {
+  color: $fc-high-contrast;
   font-size: $fs-xl;
   font-weight: bold;
+  font-family: $ff-main;
 }
 
 p {
-  // text-indent: $pad-xl;
-  color: $fc-primary;
-  font-family: $ff-main;
+  color: $fc-low-contrast;
+  font-family: $ff-body;
   font-size: $fs-sm;
 }

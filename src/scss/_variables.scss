@@ -1,4 +1,3 @@
-@use './reset';
 @use './color_schemes';
 
 :root {
@@ -30,10 +29,16 @@
 //########## FONTS ###########
 //############################
 // colors
-$fc-primary: var(--fc-primary);
+$fc-high-contrast: var(--fc-high-contrast);
+$fc-low-contrast: var(--fc-low-contrast);
 $fc-on-primary: var(--fc-on-primary);
+$fc-low-contrast-inv: var(--fc-low-contrast-inv);
+$fc-on-primary: var(--fc-on-primary);
+
 // families
 $ff-main: Georgia, 'Times New Roman', Times, serif;
+$ff-body: Verdana, Geneva, Tahoma, sans-serif;
+
 // sizes
 $fs-xs: var(--fs-xs);
 $fs-sm: var(--fs-sm);
@@ -50,8 +55,10 @@ $bg-clr: var(--bg-clr);
 $clr-primary: var(--clr-primary);
 $clr-primary-var: var(--clr-primary-var);
 $clr-secondary: var(--clr-secondary);
-$surface-1-clr: var(--surface-1-clr);
-$surface-2-clr: var(--surface-2-clr);
+// $surface-1-clr: var(--surface-1-clr);
+// $surface-2-clr: var(--surface-2-clr);
+// $surface-3-clr: var(--surface-3-clr);
+// $surface-4-clr: var(--surface-4-clr);
 
 //############################
 //###### SPACE/PADDING #######

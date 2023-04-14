@@ -1,8 +1,58 @@
-@mixin defineColorHSL($color, $hue, $saturation, $lightness) {
-  #{$color}: unquote("hsl(#{$hue}, #{$saturation}, #{lightness}");
-  #{$color}-h: #{$hue};
-  #{$color}-s: #{$saturation};
-  #{$color}-l: #{$lightness};
+@use 'sass:color';
+
+@mixin defineColorHSL($name, $hue, $saturation, $lightness) {
+  #{$name}: unquote("hsl(#{$hue}, #{$saturation}, #{$lightness})");
+  #{$name}-h: #{$hue};
+  #{$name}-s: #{$saturation};
+  #{$name}-l: #{$lightness};
+}
+
+@mixin defineColor($name, $color) {
+  @include defineColorHSL(
+    $name,
+    color.hue($color),
+    color.saturation($color),
+    color.lightness($color),
+  )
+}
+
+@mixin surfaceColors($color) {
+  @include defineColorHSL(
+    --bg-clr,
+    color.hue($color),
+    color.saturation($color),
+    color.lightness($color)
+  );
+  @include defineColorHSL(
+    --surface-1-clr,
+    color.hue(mix($color, #FFF, 95%)),
+    color.saturation(mix($color, #FFF, 95%)),
+    color.lightness(mix($color, #FFF, 95%)),
+  );
+  @include defineColorHSL(
+    --surface-2-clr,
+    color.hue(mix($color, #FFF, 93%)),
+    color.saturation(mix($color, #FFF, 93%)),
+    color.lightness(mix($color, #FFF, 93%)),
+  );
+  @include defineColorHSL(
+    --surface-3-clr,
+    color.hue(mix($color, #FFF, 91%)),
+    color.saturation(mix($color, #FFF, 91%)),
+    color.lightness(mix($color, #FFF, 91%)),
+  );
+  @include defineColorHSL(
+    --surface-4-clr,
+    color.hue(mix($color, #FFF, 89%)),
+    color.saturation(mix($color, #FFF, 89%)),
+    color.lightness(mix($color, #FFF, 89%)),
+  );
+}
+
+
+
+@function dp($num: 1) {
+  @return var(--surface-#{$num}-clr, var(--bg-clr));
 }
 
 // return css color variable with different opacity value

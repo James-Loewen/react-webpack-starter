@@ -1,57 +1,94 @@
-$shardar: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
-$dark-bg-clr: hsl(232, 11%, 15%);
+@use './mixins' as m;
 
-$themes: (
+$THEMES: (
   light: (
+    // background color
+    bg-colors: (
+      bg-clr: hsl(0, 0%, 100%),
+    ),
 
+    // brand colors (i.e., mutable colors)
+    brand-colors: (
+      clr-primary: hsl(219, 79%, 85%),
+      clr-primary-var: hsl(219, 79%, 48%),
+      clr-secondary: hsl(96, 42%, 61%),
+      clr-secondary-var: hsl(96, 42%, 28%),
+      clr-error: #B00020,
+    ),
+
+    // font colors
+    font-colors: (
+      fc-high-contrast: hsl(232, 11%, 15%),
+      fc-low-contrast: hsl(232, 11%, 32%),
+      fc-on-primary: hsl(232, 11%, 15%),
+    ),
+
+    // shadows
+    misc: (
+      shadow-1: #{rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px},
+    ),
   ),
   dark: (
-    bg-clr: hsl(232, 11%, 15%),
+    // background color
+    bg-colors: (
+      bg-clr: hsl(232, 11%, 15%),
+    ),
+
+    // brand colors (i.e., mutable colors)
+    brand-colors: (
+      clr-primary: hsl(267, 96%, 80%),
+      clr-primary-var: hsl(258, 100%, 35%),
+      clr-secondary: hsl(43, 74%, 65%),
+      clr-secondary-var: hsl(43, 74%, 32%),
+      clr-error: #EF8888,
+    ),
+
+    // font colors
+    font-colors: (
+      fc-high-contrast: hsl(240, 10%, 88%),
+      fc-low-contrast: hsl(240, 10%, 71%),
+      fc-on-primary: hsl(232, 11%, 15%),
+    ),
+
+    // shadows
+    misc: (
+      shadow-1: none,
+    ),
   )
 );
 
-@mixin light-theme {
-  color-scheme: light;
-  --clr-primary: #7FA7F0;
-  --bg-clr: #fff;
-  --surface-1-clr: #fff;
-  --surface-2-clr: #eee;
-  --fc-primary: hsl(240, 4%, 20%);
-  --fc-on-primary: #000;
-  --shadow-1: #{$shardar};
-}
-
-@mixin dark-theme {
-  color-scheme: dark;
-  --clr-primary: #BB86FC;
-  --clr-primary-var: #3700B3;
-  --clr-secondary: #03DAC5;
-  --bg-clr: #{map-get(map-get($themes, dark), bg-clr)};
-  --surface-1-clr: #{mix(map-get(map-get($themes, dark), bg-clr), #fff, 96%)};
-  --surface-2-clr: #{mix(map-get(map-get($themes, dark), bg-clr), #fff, 92%)};
-  --fc-primary: #DDDDE3;
-  --fc-on-primary: #000;
-  --shadow-1: none;
-}
-
-body {
-  @include light-theme;
-  
-  &.dark-theme {
-    @include dark-theme;
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  body {
-    @include dark-theme;
-    
-    &.light-theme {
-      @include light-theme;
+@mixin createThemedStyles($theme) {
+  color-scheme: #{$theme};
+  $theme-map: map-get($THEMES, $theme);
+  @each $category, $styles in $theme-map {
+    @each $name, $value in $styles {
+      @if $category == 'bg-colors' {
+        @include m.surfaceColors($value);
+      } @else if $category == 'brand-colors' {
+        @include m.defineColor(--#{$name}, $value);
+      } @else if $category == 'font-colors' {
+        --#{$name}: #{$value};
+      } @else if $category == 'misc' {
+        --#{$name}: #{$value};
+      }
     }
   }
 }
 
 body {
-  background-color: var(--bg-clr);
+  @include createThemedStyles(light);
+  
+  &.dark-theme {
+    @include createThemedStyles(dark);
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    @include createThemedStyles(dark);
+    
+    &.light-theme {
+      @include createThemedStyles(light);
+    }
+  }
 }
