@@ -18,6 +18,7 @@
   
   // type scale
   --fs-scale-ratio: 1.4;
+  --fs-xs: calc(var(--fs-base) / var(--fs-scale-ratio));
   --fs-sm: var(--fs-base);
   --fs-md: calc(var(--fs-sm) * var(--fs-scale-ratio));
   --fs-lg: calc(var(--fs-md) * var(--fs-scale-ratio));
@@ -25,19 +26,17 @@
   --fs-xxl: calc(var(--fs-xl) * var(--fs-scale-ratio));
 }
 
-//############################
-//########## FONTS ###########
-//############################
+// ########################################
+// ####             FONTS              ####
+// ########################################
+// families
+$ff-title: Georgia, 'Times New Roman', Times, serif;
+$ff-body: Verdana, Geneva, Tahoma, sans-serif;
+
 // colors
 $fc-high-contrast: var(--fc-high-contrast);
 $fc-low-contrast: var(--fc-low-contrast);
 $fc-on-primary: var(--fc-on-primary);
-$fc-low-contrast-inv: var(--fc-low-contrast-inv);
-$fc-on-primary: var(--fc-on-primary);
-
-// families
-$ff-main: Georgia, 'Times New Roman', Times, serif;
-$ff-body: Verdana, Geneva, Tahoma, sans-serif;
 
 // sizes
 $fs-xs: var(--fs-xs);
@@ -47,22 +46,21 @@ $fs-lg: var(--fs-lg);
 $fs-xl: var(--fs-xl);
 $fs-xxl: var(--fs-xxl);
 
-//############################
-//########## COLORS ##########
-//############################
+// ########################################
+// ####             COLORS             ####
+// ########################################
 // background
 $bg-clr: var(--bg-clr);
+
+// brand colors
 $clr-primary: var(--clr-primary);
 $clr-primary-var: var(--clr-primary-var);
 $clr-secondary: var(--clr-secondary);
-// $surface-1-clr: var(--surface-1-clr);
-// $surface-2-clr: var(--surface-2-clr);
-// $surface-3-clr: var(--surface-3-clr);
-// $surface-4-clr: var(--surface-4-clr);
+$clr-error: var(--clr-error);
 
-//############################
-//###### SPACE/PADDING #######
-//############################
+// ########################################
+// ####         SPACE/PADDING          ####
+// ########################################
 $pad-xs: var(--pad-xs);
 $pad-sm: var(--pad-sm);
 $pad-md: var(--pad-md);
@@ -70,7 +68,7 @@ $pad-lg: var(--pad-lg);
 $pad-xl: var(--pad-xl);
 $pad-xxl: var(--pad-xxl);
 
-//############################
-//########## MISC. ###########
-//############################
+// #######################################
+// ####             MISC.             ####
+// #######################################
 $shadow-1: var(--shadow-1);

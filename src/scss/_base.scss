@@ -1,13 +1,11 @@
 @use './variables' as *;
 
-/*! minireset.css v0.0.6 | MIT License | github.com/jgthms/minireset.css */
-* {
+// ########################################
+// ####             RESET              ####
+// ########################################
+*, *::before, *::after {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-}
-
-*, *::before, *::after {
   box-sizing: border-box;
 }
 
@@ -26,6 +24,9 @@ img {
   max-width: 100%;
 }
 
+// ########################################
+// ####          BASE STYLES           ####
+// ########################################
 #root {
   height: 80%;
   padding: $pad-md;

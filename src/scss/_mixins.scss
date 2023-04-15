@@ -1,5 +1,10 @@
 @use 'sass:color';
 
+// ########################################
+// ####           MIXINS FOR           ####
+// ####     DEFINING THEME COLORS      ####
+// ########################################
+// Save hue, sat., and lum. as separate css custom props
 @mixin defineColorHSL($name, $hue, $saturation, $lightness) {
   #{$name}: unquote("hsl(#{$hue}, #{$saturation}, #{$lightness})");
   #{$name}-h: #{$hue};
@@ -7,6 +12,7 @@
   #{$name}-l: #{$lightness};
 }
 
+// Separate hue, sat., and lum.
 @mixin defineColor($name, $color) {
   @include defineColorHSL(
     $name,
@@ -16,6 +22,7 @@
   )
 }
 
+// Create different 'elevations' based on $bg-clr
 @mixin surfaceColors($color) {
   @include defineColorHSL(
     --bg-clr,
@@ -49,13 +56,20 @@
   );
 }
 
-
-
+// ########################################
+// ####         FUNCTIONS FOR          ####
+// ####        TWEAKING COLORS         ####
+// ########################################
+// Returns surface color at elevation levels (1-4)
 @function dp($num: 1) {
+  @if $num < 1 or $num > 4 {
+    @warn 'DP value must be between 1 and 4. Value given: #{$num}';
+    @return var(--bg-clr);
+  }
   @return var(--surface-#{$num}-clr, var(--bg-clr));
 }
 
-// return css color variable with different opacity value
+// Returns a given color with a specified opacity
 @function alpha($color, $opacity){
   $color: str-replace($color, 'var(');
   $color: str-replace($color, ')');
@@ -65,6 +79,7 @@
   @return hsla($color-h, $color-s, $color-l, $opacity);
 }
 
+// Returns a lighter/darker variation of a given color
 @function lightness($color, $lightnessMultiplier){
   $color: str-replace($color, 'var(');
   $color: str-replace($color, ')');
@@ -74,6 +89,7 @@
   @return hsl($color-h, $color-s, calc(#{$color-l} * #{$lightnessMultiplier}));
 }
 
+// Returns a more/less saturated variation of a given color
 @function saturation($color, $saturationMultiplier){
   $color: str-replace($color, 'var(');
   $color: str-replace($color, ')');
@@ -83,7 +99,11 @@
   @return hsl($color-h, calc(#{$color-s} * #{$saturationMultiplier}), $color-l);
 }
 
-// replace substring with another string
+// ########################################
+// ####            UTILITY             ####
+// ####           FUNCTION(S)          ####
+// ########################################
+// Util function for dealing with strings
 // credits: https://css-tricks.com/snippets/sass/str-replace-function/
 @function str-replace($string, $search, $replace: '') {
   $index: str-index($string, $search);

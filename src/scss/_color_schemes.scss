@@ -1,5 +1,9 @@
 @use './mixins' as m;
 
+// ########################################
+// ####           THEME MAP            ####
+// ########################################
+// Set all themed colors here:
 $THEMES: (
   light: (
     // background color
@@ -57,6 +61,7 @@ $THEMES: (
   )
 );
 
+// Util mixin to iterate over $THEMES map
 @mixin createThemedStyles($theme) {
   color-scheme: #{$theme};
   $theme-map: map-get($THEMES, $theme);
@@ -75,6 +80,7 @@ $THEMES: (
   }
 }
 
+// Not very DRY, but needed for theme toggling
 body {
   @include createThemedStyles(light);
   
