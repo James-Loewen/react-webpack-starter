@@ -8,7 +8,8 @@ $THEMES: (
   light: (
     // background color
     bg-colors: (
-      bg-clr: hsl(0, 0%, 100%),
+      // bg-clr: hsl(0, 0%, 100%),
+      bg-clr: #fdfaf5,
     ),
 
     // brand colors (i.e., mutable colors)
@@ -29,7 +30,7 @@ $THEMES: (
 
     // shadows
     misc: (
-      shadow-1: #{rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px},
+      shadow-1: #{rgba(34, 35, 42, 0.16) 0px 3px 6px, rgba(34, 35, 42, 0.23) 0px 3px 6px},
     ),
   ),
   dark: (
@@ -82,19 +83,11 @@ $THEMES: (
 
 // Not very DRY, but needed for theme toggling
 body {
-  @include createThemedStyles(light);
+  &.light-theme {
+    @include createThemedStyles(light);
+  }
   
   &.dark-theme {
     @include createThemedStyles(dark);
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  body {
-    @include createThemedStyles(dark);
-    
-    &.light-theme {
-      @include createThemedStyles(light);
-    }
   }
 }
